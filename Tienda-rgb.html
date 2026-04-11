@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title> TIENDA RGB · Calidad y Satisfacción</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: #0a192f; color: #ffffff; line-height: 1.5; min-height: 100vh; }
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+        header { background: #0a192f; padding: 12px 0; position: sticky; top: 0; z-index: 90; border-bottom: 4px solid; border-image: linear-gradient(90deg, #ff0000 0%, #ff8800 12%, #ffff00 25%, #00cc00 37%, #0088ff 50%, #4400ff 62%, #8800ff 75%, #ff00cc 87%, #ff0000 100%) 1; box-shadow: 0 4px 20px rgba(0, 255, 255, 0.15); backdrop-filter: blur(8px); background: rgba(10, 25, 47, 0.95); }
+        .header-content { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo h1 { font-weight: 900; font-size: 1.6rem; background: linear-gradient(90deg, #ff3333, #ffaa00, #ccff00, #33ff99, #33ccff, #9966ff, #ff66cc, #ff3333); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .logo span { font-size: 0.7rem; color: #ccd6f6; font-weight: 500; display: block; }
+        .amazon-badge { display: flex; align-items: center; background: #1a2a4a; padding: 5px 12px; border-radius: 30px; border: 2px solid #ff9900; gap: 6px; }
+        .amazon-badge i { color: #ff9900; font-size: 1.2rem; }
+        .amazon-badge span { color: white; font-weight: 700; font-size: 0.8rem; }
+        .amazon-badge small { color: #aaccff; font-size: 0.6rem; }
+        .slogan-badge { background: rgba(255,255,255,0.08); padding: 6px 15px; border-radius: 30px; border: 2px solid; border-image: linear-gradient(45deg, #ff4444, #44ff88, #4488ff, #ff44ff) 1; font-weight: 600; font-size: 0.8rem; color: #e6f1ff; }
+        .contact-header { display: flex; align-items: center; gap: 8px; }
+        .whatsapp-header { display: flex; align-items: center; gap: 5px; background: #25d366; padding: 6px 12px; border-radius: 30px; color: white; font-weight: 700; text-decoration: none; border: 2px solid #aaffaa; font-size: 0.75rem; }
+        .cart-icon { background: #112240; padding: 6px 15px; border-radius: 30px; font-weight: 700; color: white; border: 2px solid #6a9eff; cursor: pointer; font-size: 0.8rem; }
+        .search-section { margin: 20px 0 15px; display: flex; align-items: center; gap: 10px; }
+        .search-wrapper { display: flex; background: #0d2847; border-radius: 40px; padding: 3px 3px 3px 15px; align-items: center; border: 2px solid #4488ff; flex: 0 1 400px; max-width: 400px; }
+        .search-wrapper i { color: #ffaa33; font-size: 0.9rem; }
+        .search-wrapper input { flex: 1; background: transparent; border: none; padding: 10px 10px; font-size: 0.9rem; color: white; outline: none; min-width: 150px; }
+        .search-wrapper input::placeholder { color: #8da4d0; font-size: 0.85rem; }
+        .search-wrapper button { background: linear-gradient(145deg, #ff5500, #ff00aa, #5500ff); border: none; color: white; padding: 9px 18px; border-radius: 40px; font-weight: 700; cursor: pointer; border: 2px solid #aaccff; font-size: 0.85rem; white-space: nowrap; }
+        .view-all-btn { background: #1a3a5a; color: white; border: 2px solid #33ffaa; padding: 9px 18px; border-radius: 40px; font-weight: 700; cursor: pointer; font-size: 0.85rem; display: flex; align-items: center; gap: 6px; white-space: nowrap; transition: 0.2s; }
+        .view-all-btn i { color: #ffaa33; }
+        .view-all-btn:hover { background: #2a4a7a; border-color: #6a9eff; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; margin: 25px 0 35px; }
+        .product-card { background: #112240; border-radius: 20px; padding: 18px; border: 2px solid #3a7bd5; box-shadow: 0 10px 0 #071020; transition: 0.2s; display: flex; flex-direction: column; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 15px 0 #051020, 0 0 20px #6a9eff; }
+        .product-img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 16px; background: #1a2a4a; margin-bottom: 16px; border: 2px solid #ffaa3380; }
+        .product-category { text-transform: uppercase; font-weight: 700; color: #aaddff; font-size: 0.7rem; margin-bottom: 4px; }
+        .product-title { font-weight: 800; font-size: 1.3rem; margin-bottom: 8px; color: #f0f6ff; }
+        .price-row { display: flex; align-items: center; justify-content: space-between; margin: 8px 0 16px; }
+        .price { font-weight: 900; font-size: 1.8rem; background: linear-gradient(145deg, #ffffff, #aaccff); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .quality-badge { background: #1a3a5a; color: #b3ffda; padding: 5px 12px; border-radius: 30px; font-weight: 700; font-size: 0.7rem; border: 1px solid #33ffaa; }
+        .btn-buy { background: transparent; border: 2.5px solid #6a9eff; color: #b3d9ff; padding: 14px 10px; border-radius: 40px; font-weight: 800; cursor: pointer; text-transform: uppercase; margin-top: auto; transition: 0.2s; }
+        .btn-buy i { color: #ffaa33; margin-right: 6px; }
+        .btn-buy:hover { background: #3a7bd5; color: white; border-color: #aaffaa; }
+        .payment-simulator { background: #0c203a; border-radius: 30px; padding: 30px 25px; margin: 20px 0 40px; border: 3px solid #6a9eff; }
+        .sim-title { font-size: 1.8rem; font-weight: 800; margin-bottom: 20px; border-left: 8px solid #ffaa33; padding-left: 20px; }
+        .checkout-panel { display: flex; flex-wrap: wrap; gap: 25px; }
+        .cart-summary { flex: 1.2; background: #0e2a4a; padding: 20px; border-radius: 24px; }
+        .cart-items { min-height: 80px; }
+        .cart-item { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid #2a6a9a; color: #ccd6f6; }
+        .cart-total { font-size: 1.8rem; font-weight: 900; margin-top: 15px; color: #ffcc66; }
+        .payment-form { flex: 2; }
+        .input-group { margin-bottom: 15px; }
+        .input-group label { color: #aaccff; font-weight: 600; font-size: 0.9rem; }
+        .input-group input { width: 100%; padding: 14px 16px; background: #0a1a2f; border: 2px solid #33ffaa; border-radius: 20px; color: white; font-size: 0.95rem; }
+        .btn-pay { background: linear-gradient(145deg, #ff5500, #cc00aa, #0044ff); border: none; padding: 18px; width: 100%; border-radius: 50px; font-weight: 900; font-size: 1.1rem; color: white; cursor: pointer; border: 2px solid #aaffdd; }
+        .tracking-result { margin-top: 25px; background: #0e2a44; padding: 20px; border-radius: 24px; border-left: 12px solid #ffaa33; display: none; }
+        .tracking-result.show-track { display: block; }
+        .map-sim { background: #162b4a; height: 100px; border-radius: 20px; display: flex; align-items: center; justify-content: center; border: 2px solid #6a9eff; margin: 15px 0; color: white; }
+        .whatsapp-float { position: fixed; bottom: 20px; left: 20px; z-index: 999; background: #25d366; color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 5px 0 #0a5a2a; border: 3px solid #aaffaa; text-decoration: none; transition: 0.2s; }
+        .whatsapp-float:hover { transform: scale(1.1); }
+        .chat-sms-icon { position: fixed; bottom: 20px; right: 20px; z-index: 1000; background: linear-gradient(145deg, #3a7bd5, #6a9eff); color: white; width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 5px 0 #1a2a5a, 0 0 20px #6a9eff80; border: 3px solid #aaffdd; cursor: pointer; transition: 0.2s; }
+        .chatbot-window { position: fixed; bottom: 90px; right: 20px; width: 380px; max-width: 90vw; background: #0e2a4a; border-radius: 24px; border: 3px solid #6a9eff; box-shadow: 0 15px 0 #051020; z-index: 1001; display: none; flex-direction: column; overflow: hidden; }
+        .chatbot-window.active { display: flex; }
+        .chatbot-header { background: linear-gradient(90deg, #ff5500, #aa22ff, #0066ff); padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; color: white; font-weight: 800; }
+        .chatbot-body { padding: 16px; max-height: 400px; overflow-y: auto; background: #0a1e32; }
+        .bot-message { background: #1a3a6a; padding: 12px 16px; border-radius: 18px 18px 18px 4px; margin-bottom: 12px; border-left: 5px solid #33ffaa; color: #e0f0ff; font-size: 0.9rem; line-height: 1.4; }
+        .user-message { background: #2a4a7a; padding: 12px 16px; border-radius: 18px 18px 4px 18px; margin-bottom: 12px; text-align: right; border-right: 5px solid #ffaa33; font-size: 0.9rem; line-height: 1.4; }
+        .typing-indicator { display: flex; gap: 4px; padding: 12px 16px; background: #1a3a6a; border-radius: 18px; width: fit-content; margin-bottom: 12px; }
+        .typing-indicator span { width: 8px; height: 8px; background: #aaccff; border-radius: 50%; animation: typing 1.4s infinite; }
+        .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+        .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+        @keyframes typing { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-10px); } }
+        .chat-input-area { display: flex; padding: 12px; background: #0a1a2f; border-top: 2px solid #6a9eff; }
+        .chat-input-area input { flex: 1; background: #1a2f4a; border: 2px solid #33ffaa; border-radius: 30px; padding: 10px 14px; color: white; outline: none; font-size: 0.9rem; }
+        .chat-input-area button { background: #ff5500; border: none; margin-left: 8px; padding: 0 18px; border-radius: 30px; color: white; font-weight: 700; cursor: pointer; }
+        .suggestions-container { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+        .suggestion-chip { background: #1a3a5a; color: #b3d9ff; border: 1px solid #33ffaa; padding: 6px 12px; border-radius: 30px; font-size: 0.75rem; cursor: pointer; transition: 0.2s; }
+        .suggestion-chip:hover { background: #2a4a7a; color: white; }
+        .close-chat { background: none; border: none; color: white; font-size: 1.3rem; cursor: pointer; }
+        footer { text-align: center; padding: 25px; background: #071520; border-top: 3px solid #ffaa33; color: #b3d9ff; font-size: 0.9rem; }
+        .results-count { color: #aaccff; font-size: 0.9rem; margin-left: 10px; }
+        @media (max-width: 800px) { .header-content { justify-content: center; } .search-section { flex-wrap: wrap; } .search-wrapper { flex: 1 1 100%; max-width: 100%; } .products-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); } }
+    </style>
+</head>
+<body>
+
+<a href="https://wa.me/521234567890?text=Hola%2C%20vi%20TIENDA%20RGB%20y%20me%20gustar%C3%ADa%20hablar%20con%20un%20asesor" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<div class="chat-sms-icon" id="chatSmsIcon">
+    <i class="fas fa-comment-dots"></i>
+</div>
+
+<div class="chatbot-window" id="chatbotWindow">
+    <div class="chatbot-header">
+        <span><i class="fas fa-robot"></i> RGBot · Asistente IA</span>
+        <button class="close-chat" id="closeChatBtn"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chatbot-body" id="chatBody">
+        <div class="bot-message"> ¡Hola! Soy <strong>RGBot</strong>, tu asistente personal. Estoy aquí para ayudarte con:</div>
+        <div class="bot-message">
+             Encontrar productos<br>
+             Información de precios<br>
+             Estado de envíos<br>
+             Soporte personalizado
+        </div>
+        <div class="suggestions-container" id="initialSuggestions">
+            <div class="suggestion-chip" data-query="Ver catálogo"> Ver catálogo</div>
+            <div class="suggestion-chip" data-query="Ofertas">️ Ofertas</div>
+            <div class="suggestion-chip" data-query="Envíos"> Envíos</div>
+            <div class="suggestion-chip" data-query="Contactar asesor"> Contactar asesor</div>
+        </div>
+    </div>
+    <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="Escribe tu mensaje aquí...">
+        <button id="sendChatBtn"><i class="fas fa-paper-plane"></i></button>
+    </div>
+</div>
+
+<header>
+    <div class="container header-content">
+        <div class="logo-area">
+            <div class="logo">
+                <h1> TIENDA RGB</h1>
+                <span>CALIDAD Y SATISFACCIÓN</span>
+            </div>
+            <div class="amazon-badge">
+                <i class="fab fa-amazon"></i>
+                <div>
+                    <span>Amazon</span>
+                    <small>Partner Oficial</small>
+                </div>
+            </div>
+        </div>
+        <div class="slogan-badge">
+            <i class="fas fa-star"></i> 
+            VENDEMOS CON LA MAYOR CALIDAD
+        </div>
+        <div class="contact-header">
+            <a href="https://wa.me/521234567890" class="whatsapp-header" target="_blank">
+                <i class="fab fa-whatsapp"></i> +52 123 456 7890
+            </a>
+            <div class="cart-icon" id="cartWidget">
+                <i class="fas fa-shopping-cart"></i> <span id="cartCount">0</span> · $<span id="cartTotalWidget">0</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <div class="search-section">
+        <div class="search-wrapper">
+            <i class="fas fa-search"></i>
+            <input type="text" id="searchInput" placeholder="Buscar productos...">
+            <button id="searchBtn"><i class="fas fa-arrow-right"></i> Buscar</button>
+        </div>
+        <button class="view-all-btn" id="viewAllBtn">
+            <i class="fas fa-grid-2"></i> Ver todos los productos
+        </button>
+        <span class="results-count" id="resultsCount"></span>
+    </div>
+
+    <h2 style="font-weight: 900; color:#e0f0ff; margin-bottom: 5px; font-size: 1.6rem;">
+        <i class="fas fa-rainbow" style="background:linear-gradient(45deg,#ff0000,#ffaa00,#00ff00,#0088ff,#8800ff);-webkit-background-clip:text;background-clip:text;color:transparent;"></i> 
+        Productos destacados
+    </h2>
+    <div class="products-grid" id="productsGrid"></div>
+
+    <div class="payment-simulator">
+        <div class="sim-title"><i class="fas fa-credit-card"></i> Pago seguro simulado</div>
+        <div class="checkout-panel">
+            <div class="cart-summary">
+                <h3 style="color:#aaccff; margin-bottom: 12px;"><i class="fas fa-box"></i> Carrito RGB</h3>
+                <div class="cart-items" id="cartItemsList">✨ Añade productos</div>
+                <div class="cart-total" id="cartTotalDisplay">$0.00</div>
+            </div>
+            <div class="payment-form">
+                <div class="input-group"><label>Nombre</label><input value="Cliente RGB" id="cardName"></div>
+                <div class="input-group"><label>Tarjeta</label><input value="4242 4242 4242 4242"></div>
+                <div class="input-group"><label>Dirección de envío</label><input id="shippingAddress" value="Calle Arcoíris 123, Ciudad RGB"></div>
+                <button class="btn-pay" id="simulatePaymentBtn"><i class="fas fa-truck"></i> COMPRAR Y RASTREAR</button>
+            </div>
+        </div>
+        <div class="tracking-result" id="trackingPanel">
+            <div style="display:flex; gap:10px;"><i class="fas fa-map-marked-alt" style="font-size:1.8rem;"></i><span style="font-weight:800;">TU ENVÍO EN VIVO</span></div>
+            <div class="map-sim" id="mapSim"> Ruta calculada</div>
+            <div id="trackingInfo">️ Esperando compra...</div>
+        </div>
+    </div>
+</main>
+
+<footer>
+     TIENDA RGB · Vendemos con la mayor calidad, tu satisfacción es nuestra prioridad<br>
+    <span style="display: block; margin-top: 8px;">
+        <i class="fab fa-whatsapp"></i> 
+        <a href="https://wa.me/521234567890" style="color: #25d366; text-decoration: none; font-weight: 700;">+52 123 456 7890</a>
+        &nbsp;|&nbsp; <i class="fab fa-amazon" style="color: #ff9900;"></i> Partner Amazon
+    </span>
+</footer>
+
+<script>
+    (function(){
+        const products = [
+            { id:1, name:"Taladro Inalámbrico 20V", category:"Herramientas", price:89.99, img: "https://images.pexels.com/photos/162553/keys-workshop-mechanic-tools-162553.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+            { id:2, name:"Jabón Artesanal de Carbón", category:"Jabones", price:12.50, img: "https://images.pexels.com/photos/4041392/pexels-photo-4041392.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+            { id:3, name:"Perfume Amatista Noir", category:"Perfumes", price:64.99, img: "https://images.pexels.com/photos/1961792/pexels-photo-1961792.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+            { id:4, name:"Chaqueta Térmica Outdoor", category:"Ropa", price:79.95, img: "https://images.pexels.com/photos/1884581/pexels-photo-1884581.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+            { id:5, name:"Smart TV 55\" 4K UHD", category:"TV", price:499.00, img: "https://images.pexels.com/photos/1201996/pexels-photo-1201996.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+            { id:6, name:"Smartphone Galaxy S25", category:"Teléfonos", price:899.00, img: "https://images.pexels.com/photos/47261/pexels-photo-47261.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+            { id:7, name:"Drone 4K con GPS", category:"Drones", price:329.99, img: "https://images.pexels.com/photos/3945683/pexels-photo-3945683.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" },
+            { id:8, name:"Set de Destornilladores 25pz", category:"Herramientas", price:34.50, img: "https://images.pexels.com/photos/1104696/pexels-photo-1104696.jpeg?auto=compress&cs=tinysrgb&w=400&h=300&fit=crop" }
+        ];
+
+        const grid = document.getElementById('productsGrid');
+        const searchInput = document.getElementById('searchInput');
+        const searchBtn = document.getElementById('searchBtn');
+        const viewAllBtn = document.getElementById('viewAllBtn');
+        const resultsCount = document.getElementById('resultsCount');
+        let currentProducts = [...products];
+        let cart = [];
+
+        function renderProducts(productsToRender) {
+            grid.innerHTML = '';
+            if (productsToRender.length === 0) {
+                grid.innerHTML = '<div class="no-results" style="grid-column:1/-1;text-align:center;padding:40px;color:#aaccff;"><i class="fas fa-search" style="font-size:2.5rem;opacity:0.5;margin-bottom:15px;display:block;"></i>No se encontraron productos</div>';
+                resultsCount.textContent = '(0 resultados)';
+                return;
+            }
+            resultsCount.textContent = '(' + productsToRender.length + ' ' + (productsToRender.length === 1 ? 'producto' : 'productos') + ')';
+            productsToRender.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = '<img class="product-img" src="' + p.img + '" alt="' + p.name + '" loading="lazy" onerror="this.src=\'https://picsum.photos/400/300?random=' + p.id + '\'">' +
+                    '<div class="product-category"><i class="fas fa-tag"></i> ' + p.category + '</div>' +
+                    '<div class="product-title">' + p.name + '</div>' +
+                    '<div class="price-row"><span class="price">$' + p.price.toFixed(2) + '</span><span class="quality-badge"><i class="fas fa-check-circle"></i> Calidad</span></div>' +
+                    '<button class="btn-buy" data-id="' + p.id + '" data-name="' + p.name + '" data-price="' + p.price + '"><i class="fas fa-cart-plus"></i> Añadir</button>';
+                grid.appendChild(card);
+            });
+            document.querySelectorAll('.btn-buy').forEach(b => b.addEventListener('click', function(){
+                addToCart(parseInt(this.dataset.id), this.dataset.name, parseFloat(this.dataset.price));
+            }));
+        }
+
+        function filterProducts(term) {
+            if (!term.trim()) { currentProducts = [...products]; }
+            else {
+                const t = term.toLowerCase().trim();
+                currentProducts = products.filter(p => p.name.toLowerCase().includes(t) || p.category.toLowerCase().includes(t));
+            }
+            renderProducts(currentProducts);
+        }
+
+        searchBtn.addEventListener('click', function(){ filterProducts(searchInput.value); });
+        searchInput.addEventListener('keypress', function(e){ if(e.key === 'Enter') filterProducts(searchInput.value); });
+        viewAllBtn.addEventListener('click', function(){ searchInput.value = ''; currentProducts = [...products]; renderProducts(currentProducts); });
+        renderProducts(products);
+
+        function updateCartUI() {
+            const total = cart.reduce((s, i) => s + i.price * i.quantity, 0);
+            const count = cart.reduce((s, i) => s + i.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+            document.getElementById('cartTotalWidget').textContent = total.toFixed(2);
+            document.getElementById('cartTotalDisplay').textContent = '$' + total.toFixed(2);
+            const itemsDiv = document.getElementById('cartItemsList');
+            if (cart.length === 0) itemsDiv.innerHTML = '✨ Añade productos';
+            else itemsDiv.innerHTML = cart.map(i => '<div class="cart-item"><span>' + i.name + ' x' + i.quantity + '</span><span>$' + (i.price * i.quantity).toFixed(2) + '</span></div>').join('');
+        }
+
+        function addToCart(id, name, price) { 
+            const exist = cart.find(p => p.id === id); 
+            exist ? exist.quantity++ : cart.push({ id, name, price, quantity: 1 }); 
+            updateCartUI(); 
+        }
+
+        document.getElementById('simulatePaymentBtn').addEventListener('click', function(){
+            if (cart.length === 0) { alert(' Añade productos primero'); return; }
+            const addr = document.getElementById('shippingAddress').value || 'Dirección indicada';
+            const total = cart.reduce((s, i) => s + i.price * i.quantity, 0).toFixed(2);
+            document.getElementById('trackingPanel').classList.add('show-track');
+            document.getElementById('mapSim').innerHTML = ' Envío a ' + addr.substring(0, 25) + '... · ️ En ruta';
+            document.getElementById('trackingInfo').innerHTML = '✅ ¡Pago exitoso! Orden #RGB' + Math.floor(Math.random() * 9000 + 1000) + ' · $' + total + '<br> Tus productos salen hacia ' + addr + '.';
+            addBotMessage(' ¡Perfecto! Tu pedido por $' + total + ' está confirmado. El envío a ' + addr + ' está en marcha. ¿Necesitas algo más?');
+            cart = []; updateCartUI();
+        });
+
+        document.getElementById('cartWidget').addEventListener('click', function(){
+            document.querySelector('.payment-simulator').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        updateCartUI();
+
+        // CHATBOT
+        const chatWindow = document.getElementById('chatbotWindow');
+        const chatSmsIcon = document.getElementById('chatSmsIcon');
+        const closeChatBtn = document.getElementById('closeChatBtn');
+        const chatBody = document.getElementById('chatBody');
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendChatBtn');
+        let conversationContext = { lastTopic: null };
+
+        chatSmsIcon.addEventListener('click', function(){ chatWindow.classList.toggle('active'); });
+        closeChatBtn.addEventListener('click', function(){ chatWindow.classList.remove('active'); });
+
+        function showTyping() {
+            const typingDiv = document.createElement('div');
+            typingDiv.className = 'typing-indicator';
+            typingDiv.id = 'typingIndicator';
+            typingDiv.innerHTML = '<span></span><span></span><span></span>';
+            chatBody.appendChild(typingDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function hideTyping() { const indicator = document.getElementById('typingIndicator'); if (indicator) indicator.remove(); }
+
+        function addBotMessage(text, suggestions = null) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'bot-message';
+            msgDiv.innerHTML = text;
+            chatBody.appendChild(msgDiv);
+            if (suggestions && suggestions.length > 0) {
+                const suggContainer = document.createElement('div');
+                suggContainer.className = 'suggestions-container';
+                suggestions.forEach(s => {
+                    const chip = document.createElement('span');
+                    chip.className = 'suggestion-chip';
+                    chip.textContent = s;
+                    chip.addEventListener('click', function(){ chatInput.value = s; sendMessage(); });
+                    suggContainer.appendChild(chip);
+                });
+                chatBody.appendChild(suggContainer);
+            }
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function addUserMessage(text) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = 'user-message';
+            msgDiv.textContent = text;
+            chatBody.appendChild(msgDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+        }
+
+        function generateSmartResponse(userMessage) {
+            const msg = userMessage.toLowerCase();
+            if (msg.includes('herramienta')) conversationContext.lastTopic = 'herramientas';
+            if (msg.includes('perfume')) conversationContext.lastTopic = 'perfumes';
+            if (msg.includes('drone')) conversationContext.lastTopic = 'drones';
+            
+            if (msg.includes('hola') || msg.includes('buenos')) return { text: '¡Hola!  Soy RGBot. ¿Qué te trae por aquí hoy?', suggestions: ['Ver productos', 'Ofertas', 'Ayuda con mi pedido'] };
+            if (msg.includes('catálogo') || msg.includes('ver productos')) return { text: ' Contamos con: Herramientas · Jabones · Perfumes · Ropa · TV · Teléfonos · Drones', suggestions: ['Herramientas', 'Perfumes', 'Drones'] };
+            if (msg.includes('taladro') || msg.includes('herramienta')) return { text: ' Taladro 20V: $89.99 | Set destornilladores: $34.50<br>¿Cuál te interesa?', suggestions: ['Taladro 20V', 'Set destornilladores'] };
+            if (msg.includes('perfume')) return { text: ' Perfume Amatista Noir: $64.99. Fragancia amaderada con notas cítricas. Duración 8-10h.', suggestions: ['Añadir perfume', 'Ver más perfumes'] };
+            if (msg.includes('drone')) return { text: ' Drone 4K con GPS: $329.99. Cámara 4K, Follow Me, 25 min de vuelo.', suggestions: ['Añadir drone', 'Ver especificaciones'] };
+            if (msg.includes('pago') || msg.includes('comprar')) return { text: ' Proceso: 1. Añade productos 2. Ve a "Pago simulado" 3. Ingresa datos 4. Recibe tracking', suggestions: ['Ir a pagar', 'Ver carrito'] };
+            if (msg.includes('envío') || msg.includes('tracking')) return { text: ' Envíos en 2-5 días. Al simular compra verás tracking en vivo.', suggestions: ['Simular compra', 'Cobertura'] };
+            if (msg.includes('whatsapp') || msg.includes('contacto') || msg.includes('asesor')) return { text: ' WhatsApp: +52 123 456 7890. L-V 9am-8pm.', suggestions: ['Abrir WhatsApp'] };
+            if (msg.includes('gracias')) return { text: '¡A ti por confiar en TIENDA RGB!  ¿Algo más?', suggestions: ['Ver catálogo', 'Ofertas'] };
+            return { text: ' Puedo ayudarte con catálogo, precios, envíos, pagos o contacto. ¿Qué prefieres?', suggestions: ['Ver catálogo', 'Precios', 'Envíos', 'Contactar'] };
+        }
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (!message) return;
+            addUserMessage(message);
+            chatInput.value = '';
+            showTyping();
+            setTimeout(function(){
+                hideTyping();
+                const response = generateSmartResponse(message);
+                addBotMessage(response.text, response.suggestions);
+            }, 800);
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', function(e){ if(e.key === 'Enter') sendMessage(); });
+        document.querySelectorAll('.suggestion-chip').forEach(chip => {
+            chip.addEventListener('click', function(){ chatInput.value = this.dataset.query; sendMessage(); });
+        });
+
+        window.addBotMessage = function(text){ addBotMessage(text); };
+    })();
+</script>
+</body>
+</html>
